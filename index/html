@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мой первый сайт</title>
+
+    <!-- ============================================================
+         СЮДА ВСТАВИТЬ СЧЁТЧИК ЯНДЕКС МЕТРИКИ
+         Код берём на metrika.yandex.ru при создании счётчика.
+         Вставляем ВСЁ, что скопировали, между этими строками.
+         ============================================================ -->
+
+
+
+    <!-- ============================================================
+         КОНЕЦ БЛОКА СЧЁТЧИКА
+         ============================================================ -->
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 0 20px;
+            text-align: center;
+            color: #333;
+        }
+        h1 { font-size: 28px; }
+        p  { font-size: 17px; line-height: 1.5; }
+        button {
+            background: #2c7be5;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 14px 32px;
+            font-size: 17px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        button:hover { background: #1a5fc4; }
+        /* Блок «спасибо» изначально спрятан, показывается после отправки */
+        #thanks { display: none; margin-top: 20px; color: #1a7f37; font-weight: bold; }
+        form { margin-top: 20px; }
+        input {
+            padding: 10px;
+            width: 70%;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Привет! Это наш учебный сайт</h1>
+
+    <p>Мы учимся подключать Яндекс Метрику, настраивать цели
+       и проводить эксперименты.</p>
+
+    <!-- Кнопка с целью lead_click.
+         id="lead-btn" нужен, чтобы код мог её найти. -->
+    <button id="lead-btn">Оставить заявку</button>
+
+    <!-- Форма с целью form_submit.
+         Реального сервера нет: после отправки просто показываем «Спасибо». -->
+    <form id="lead-form">
+        <input type="email" placeholder="Ваш e-mail" required>
+        <br><br>
+        <button type="submit">Отправить</button>
+    </form>
+
+    <div id="thanks">Спасибо! Заявка отправлена 🎉</div>
+
+    <script>
+        // Цель 1: клик по кнопке «Оставить заявку»
+        // XXXXXXXX замените на номер ВАШЕГО счётчика!
+        document.getElementById('lead-btn').addEventListener('click', function () {
+            ym(XXXXXXXX, 'reachGoal', 'lead_click');
+        });
+
+        // Цель 2: отправка формы
+        document.getElementById('lead-form').addEventListener('submit', function (event) {
+            event.preventDefault(); // не перезагружаем страницу
+            ym(XXXXXXXX, 'reachGoal', 'form_submit');
+            document.getElementById('thanks').style.display = 'block';
+            this.style.display = 'none'; // прячем форму
+        });
+    </script>
+
+</body>
+</html>
